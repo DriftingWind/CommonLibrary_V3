@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 灰色背景,dialog布局中 -->
+    <color name="gray_bg_color">#edf1f4</color>
+    <!--通明度 0.6  -->
+    <color name="translucent_common_color">#99222222</color>
+    <color name="gray_bg">#cccccc</color>
+    <color name="toast_color">#ff2E76B9</color>
+    <color name="menu_bg">#ffc9c9c9</color>
+     
+
+</resources>

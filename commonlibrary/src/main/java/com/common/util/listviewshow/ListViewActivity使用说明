@@ -1,0 +1,70 @@
+顶部返回是自定义控件 可以自己设定
+
+点击某个控件，弹出listviewactivity 选择后通过回调，更新view 和服务器
+	String[] ages = getResources().getStringArray(R.array.age_info);
+			String selectedItem;
+			if (Musers.getAge() != null) {
+				selectedItem = Musers.getAge() + "岁";
+			} else {
+				selectedItem = ages[0] + "岁";
+			}
+			Drawable selectedImg = getResources().getDrawable(
+					R.drawable.img_selected_custom);
+			ListViewActivity.getInstance(this).show_ListView(
+					Arrays.asList(ages), selectedImg, selectedItem,
+					new ListViewActivityListener() {
+						//初始化自定义控件titlebar 样式
+						@Override
+						public void initTitleBar(
+								Custom_TitleBar_1 custom_TitleBar_1) {
+
+							// 自定义控件titlebar设置标题
+							custom_TitleBar_1
+									.setText_TitleDesc_custom_titlebar_1("年龄选择");
+							// 自定义控件titlebar设置背景图片
+							custom_TitleBar_1
+									.setBackground_RelativeLayout_Custom_TitleBar_1(getResources()
+											.getDrawable(
+													R.drawable.tax_info_bg_titlebar));
+							// 自定义控件titlebar设置返回textview样式
+							TextView left_tv_custom_titlebar_1 = custom_TitleBar_1
+									.getLeft_TV_Custom_TitleBar_1();
+							LayoutParams params = new LayoutParams(
+									LayoutParams.WRAP_CONTENT,
+									LayoutParams.WRAP_CONTENT);
+							params.leftMargin = 10;
+							params.rightMargin = 10;
+							params.topMargin = 15;
+							params.bottomMargin = 15;
+							left_tv_custom_titlebar_1.setLayoutParams(params);
+							left_tv_custom_titlebar_1
+									.setGravity(Gravity.CENTER);
+							left_tv_custom_titlebar_1.setTextSize(15);
+							int horizontal = getResources()
+									.getDimensionPixelOffset(R.dimen.dip15);
+							int vertical = getResources()
+									.getDimensionPixelOffset(R.dimen.dip5);
+							left_tv_custom_titlebar_1.setPadding(horizontal,
+									vertical, horizontal, vertical);
+							// 自定义控件titlebar设置返回textview背景图片
+							custom_TitleBar_1
+									.setBackground_Left_TV_Custom_TitleBar_1(getResources()
+											.getDrawable(
+													R.drawable.tax_info_btn_back));
+							// 自定义控件titlebar设置返回textview文字
+							custom_TitleBar_1
+									.setText_Left_TV_Custom_TitleBar_1("");
+						}
+                        //根据回调获得更改后的值，并跟新数据库
+						@Override
+						public void updateView(String showData) {
+							rlAge.setMiddleTextView(showData);
+							String age_str = showData.substring(0,
+									showData.length() - 1);
+							if (!age_str.equals(Musers.getAge() + "")) {
+								updateUser("age", age_str);
+							}
+
+						}
+
+					});

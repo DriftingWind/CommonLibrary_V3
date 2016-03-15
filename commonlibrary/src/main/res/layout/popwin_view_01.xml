@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:id="@+id/popwin_view_1"
+     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:background="@color/translucent_common_color"
+        android:clickable="true"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/popview_comon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:background="@color/gray_bg_color"
+        android:orientation="vertical"
+        android:padding="6dp" >
+
+       <!--  <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal" >
+
+            <Button
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/sel_userinfo_takephoto"
+                android:text="@string/fbstr"
+                android:textColor="@drawable/sel_userinfo_photolayoutbtnfontcolor"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/tv_img"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_phone"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/sel_userinfo_takephoto"
+                android:text="@string/ffstr"
+                android:textColor="@drawable/sel_userinfo_photolayoutbtnfontcolor"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/tv_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/sel_userinfo_canclemodefyphoto"
+                android:text="@string/del_cancel"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </RelativeLayout> -->
+    </LinearLayout>
+
+</LinearLayout>

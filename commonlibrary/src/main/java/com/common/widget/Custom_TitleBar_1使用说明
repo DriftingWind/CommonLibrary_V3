@@ -1,0 +1,8 @@
+    <com.common.widget.Custom_TitleBar_1
+        xmlns:custom_tv="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/custom_titlebar_1_activitylistview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         />
+         
+         具体属性可以通过代码设定也可以通过xml设定

@@ -1,0 +1,118 @@
+holder.btDownd.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(final View v) {
+
+						String urlstr = CGlobal.URLFILEDOWNLOAD + "?filemd="
+								+ filemd;
+						String localfile = SD_PATH + fileName;
+						// 设置下载线程数为4，这里是我为了方便随便固定的
+						int threadcount = 4;
+						// 初始化一个downloader下载器
+						Downloader downloader = downloaders.get(urlstr);
+						if (downloader == null) {
+							downloader = new Downloader(urlstr, localfile,
+									threadcount, MGroupFileList.this,
+									mHandlerFile);
+							downloaders.put(urlstr, downloader);
+						}
+						if (downloader.isdownloading()) {
+							return;
+						}
+						// 得到下载信息类的个数组成集合
+						// LoadInfo loadInfo = downloader.getDownloaderInfors();
+						// // 显示进度条
+						// showProgress(loadInfo, urlstr, v);
+						DownloadTask dt = new DownloadTask(downloader, v);
+						dt.execute(urlstr);
+					}
+				});
+				
+				
+		private class DownloadTask extends AsyncTask<String, Integer, LoadInfo> {
+
+		private Downloader mDownloader = null;
+		private View view = null;
+		private String urlstr = null;
+
+		public DownloadTask(Downloader downloader, View v) {
+			this.mDownloader = downloader;
+			this.view = v;
+		}
+
+		@Override
+		protected LoadInfo doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			urlstr = params[0];
+			LoadInfo loadInfo = mDownloader.getDownloaderInfors();
+			mDownloader.download();
+			return loadInfo;
+		}
+
+		@Override
+		protected void onPostExecute(LoadInfo loadInfo) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(loadInfo);
+			showProgress(loadInfo, urlstr, view);
+		}
+
+	}
+	
+	
+	
+	private void showProgress(LoadInfo loadInfo, String url, View v) {
+
+		ProgressBar bar = ProgressBars.get(url);
+		if (bar == null) {
+			bar = new ProgressBar(this, null,
+					android.R.attr.progressBarStyleHorizontal);
+			bar.setMax(loadInfo.getFileSize());
+			bar.setProgress(loadInfo.getComplete());
+			System.out.println(loadInfo.getFileSize() + "--"
+					+ loadInfo.getComplete());
+			ProgressBars.put(url, bar);
+			LinearLayout.LayoutParams params = new LayoutParams(
+					LayoutParams.FILL_PARENT, 5);
+			// TODO Auto-generated method stub
+			((LinearLayout) ((LinearLayout) v.getParent()).getParent())
+					.addView(bar, params);
+		}
+
+	}
+
+	/**
+	 * 31 * 利用消息处理机制适时更新进度条 32
+	 */
+	private Handler mHandlerFile = new Handler() {
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				String url = (String) msg.obj;
+				int length = msg.arg1;
+				ProgressBar bar = ProgressBars.get(url);
+				if (bar != null) {
+					// 设置进度条按读取的length长度更新
+					bar.incrementProgressBy(length);
+					int a = bar.getProgress();
+					int b = bar.getMax();
+					if (a == b) {
+						ToastUtil.showShortToast(getApplicationContext(),
+								"下载完成", true);
+						// 下载完成后清除进度条并将map中的数据清空
+						LinearLayout layout = (LinearLayout) bar.getParent();
+						layout.removeView(bar);
+						ProgressBars.remove(url);
+						downloaders.get(url).delete(url);
+						downloaders.get(url).reset();
+						downloaders.remove(url);
+
+					}
+				}
+			}
+		}
+	};
+	private Map<String, ProgressBar> ProgressBars = new HashMap<String, ProgressBar>();
+	// 固定存放下载的音乐的路径：SD卡目录下
+	private static final String SD_PATH = "/mnt/sdcard/";
+	// 存放各个下载器
+	private Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
+	

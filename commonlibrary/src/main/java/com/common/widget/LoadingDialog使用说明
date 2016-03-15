@@ -1,0 +1,4 @@
+LoadingDialog dialog=new LoadingDialog(this, "正在测试中……");
+dialog.show();
+
+dialog.dismiss();

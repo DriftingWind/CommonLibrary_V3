@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg_custom_textview_1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_strip_setting_middle"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/leftTextView_custom_textview_1"
+        style="@style/B4_Font_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="地区" />
+
+    <TextView
+        android:id="@+id/middleTextView_custom_textview_1"
+        style="@style/B4_Font_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_weight="0.7"
+        android:duplicateParentState="true"
+        android:gravity="right"
+        android:padding="8dp"
+        android:text="合肥" />
+
+    <TextView
+        android:id="@+id/rightTextView_custom_textview_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/custom_textview_1_arrowright"
+        android:duplicateParentState="true"
+        android:gravity="center_vertical"
+        android:paddingRight="8dp" />
+
+</LinearLayout>

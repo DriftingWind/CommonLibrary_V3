@@ -1,0 +1,24 @@
+云笔记有记录 仿微信图片查看器
+要把AndroidManifest里对应的权限，以及activity声明拷贝到目标工具里
+需要拷贝的
+	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    
+    <activity android:name="com.common.util.imageshow.ImagePagerActivity" >
+        </activity>
+        
+   使用说明
+   
+     public void show_click(View v){
+//    	startActivity(new Intent(this,ImageShower.class));
+    	ArrayList<String> urls_3 = new ArrayList<String>();
+//		urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698837_7507.jpg");
+//		urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698865_3560.jpg");
+//		urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698867_8323.jpg");
+//		urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698837_5654.jpg");
+		urls_3.add("drawable://" + R.drawable.ic_launcher);
+		//R.drawable.xiaohei 默认没有加载到显示的图片 
+		//imageBrower第三个参数为  是否不显示数字下标   为true就是不显示
+		ImageShow_WeiXin.getInstance(MianActivity.this,getResources().getDrawable(R.drawable.xiaohei)).imageBrower(0, urls_3,true);
+    }     

@@ -1,0 +1,19 @@
+<com.common.widget.Custom_TextView_1
+                    xmlns:custom_tv="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/custom_textview1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    custom_tv:leftTextView="test11111"
+                    custom_tv:middleTextView="地区" />
+<com.common.widget.Custom_TextView_1
+                    xmlns:custom_tv="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/custom_textvieww"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    custom_tv:leftTextView="test11111"
+                    custom_tv:middleTextView="地区" />
+                    
+                    
+可以设置背景图片
+custom_tv:background
+                    

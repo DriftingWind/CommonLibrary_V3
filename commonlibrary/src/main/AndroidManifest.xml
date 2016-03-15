@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.common.util"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="14" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application android:allowBackup="true" >
+        <activity android:name=".imageshow.ImagePagerActivity" >
+        </activity>
+        <activity
+            android:name=".listviewshow.ListViewActivity">
+        </activity>
+        <activity
+            android:name=".webviewshow.WebViewActivity">
+        </activity>
+        <activity
+            android:name=".imagepickershow.PhotoWallActivity" />
+        <activity
+            android:name=".imagepickershow.PhotoAlbumActivity" />
+        <activity
+            android:name="com.zbar.lib.CaptureActivity">
+        </activity>
+    </application>
+
+</manifest>
