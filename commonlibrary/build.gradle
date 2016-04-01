@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.DriftingWind'
 android {
-    compileSdkVersion 17
+    compileSdkVersion 16
     buildToolsVersion '19.1.0'
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 17
+        targetSdkVersion 16
         versionCode 1
         versionName "1.0"
     }
@@ -33,4 +33,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.facebook.fresco:fresco:0.9.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
